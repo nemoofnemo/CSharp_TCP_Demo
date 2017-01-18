@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientUI", "WindowsFormsApplication1\ClientUI.csproj", "{9918A259-C3D8-43A3-A078-5C7EB8A8520F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinetUIForExampleServer", "ClinetUIForExampleServer\ClinetUIForExampleServer.csproj", "{FC29E8B5-C810-4CA5-8610-85CF6DC2EA0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{9918A259-C3D8-43A3-A078-5C7EB8A8520F}.Release|x64.Build.0 = Release|Any CPU
 		{9918A259-C3D8-43A3-A078-5C7EB8A8520F}.Release|x86.ActiveCfg = Release|Any CPU
 		{9918A259-C3D8-43A3-A078-5C7EB8A8520F}.Release|x86.Build.0 = Release|Any CPU
+		{FC29E8B5-C810-4CA5-8610-85CF6DC2EA0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC29E8B5-C810-4CA5-8610-85CF6DC2EA0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC29E8B5-C810-4CA5-8610-85CF6DC2EA0E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FC29E8B5-C810-4CA5-8610-85CF6DC2EA0E}.Debug|x64.Build.0 = Debug|Any CPU
+		{FC29E8B5-C810-4CA5-8610-85CF6DC2EA0E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FC29E8B5-C810-4CA5-8610-85CF6DC2EA0E}.Debug|x86.Build.0 = Debug|Any CPU
+		{FC29E8B5-C810-4CA5-8610-85CF6DC2EA0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC29E8B5-C810-4CA5-8610-85CF6DC2EA0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC29E8B5-C810-4CA5-8610-85CF6DC2EA0E}.Release|x64.ActiveCfg = Release|Any CPU
+		{FC29E8B5-C810-4CA5-8610-85CF6DC2EA0E}.Release|x64.Build.0 = Release|Any CPU
+		{FC29E8B5-C810-4CA5-8610-85CF6DC2EA0E}.Release|x86.ActiveCfg = Release|Any CPU
+		{FC29E8B5-C810-4CA5-8610-85CF6DC2EA0E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

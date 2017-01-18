@@ -4,20 +4,27 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net;
-using System.Net.Sockets;
 
-namespace WindowsFormsApplication1
+namespace ClinetUIForExampleServer
 {
-    public partial class ClientUI : Form
+    public partial class Form1 : Form
     {
         private const int BUFFER_SIZE = 8192;
         private Socket socket;
 
-        public ClientUI()
+        private struct _RecvArg
+        {
+            public Socket socket;
+            public byte[] buf;
+            public int length;
+        }
+
+        public Form1()
         {
             InitializeComponent();
             socket = null;
@@ -39,11 +46,11 @@ namespace WindowsFormsApplication1
                 }
 
                 IPEndPoint ep = new IPEndPoint(IPAddress.Parse(this.textBoxIP.Text), Int32.Parse(this.textBoxPort.Text));
-                socket = new Socket(ep.Address.AddressFamily,SocketType.Stream,ProtocolType.Tcp);
+                socket = new Socket(ep.Address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
                 this.richTextBoxResponse.AppendText("Start connect." + "\n");
                 socket.BeginConnect(ep, new AsyncCallback(this.ConnectCallback), socket);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 this.richTextBoxResponse.AppendText("Error In Connect:" + ex.Message + "\n");
                 try
@@ -51,7 +58,7 @@ namespace WindowsFormsApplication1
                     if (socket != null)
                         socket.Close();
                 }
-                catch(Exception ex2)
+                catch (Exception ex2)
                 {
                     this.richTextBoxResponse.AppendText("Error In Connect:" + ex2.Message + "\n");
                 }
@@ -64,13 +71,13 @@ namespace WindowsFormsApplication1
             {
                 Socket s = (Socket)ar.AsyncState;
 
-                if(s.Equals(socket) == false)
+                if (s.Equals(socket) == false)
                 {
                     s.Close();
                     return;
                 }
 
-                if(s != null)
+                if (s != null)
                 {
                     s.EndConnect(ar);
                     this.richTextBoxResponse.AppendText("Connect Success.\n");
@@ -80,19 +87,45 @@ namespace WindowsFormsApplication1
                     this.richTextBoxResponse.AppendText("Please establish connect before other operation.\n");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 this.richTextBoxResponse.AppendText("Error In ConnectCallback:" + ex.Message + "\n");
             }
         }
 
-        private void buttonSend_Click(object sender, EventArgs e)
+        private void buttonDisconnect_Click(object sender, EventArgs e)
         {
             try
             {
                 if (socket != null)
                 {
-                    byte[] arr = System.Text.Encoding.Default.GetBytes(this.richTextBoxRequest.Text);
+                    socket.Close();
+                    this.richTextBoxResponse.AppendText("Connection Closed.\n");
+                    socket = null;
+                }
+                else
+                {
+                    this.richTextBoxResponse.AppendText("Please establish connect before other operation.\n");
+                }
+            }
+            catch (Exception ex)
+            {
+                this.richTextBoxResponse.AppendText("Error In Disconnect:" + ex.Message + "\n");
+            }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            this.Opacity = (double)this.numericUpDown1.Value;
+        }
+
+        private void sendRequest(string str)
+        {
+            try
+            {
+                if (socket != null)
+                {
+                    byte[] arr = System.Text.Encoding.Default.GetBytes(str);
                     socket.BeginSend(arr, 0, arr.Length, 0, new AsyncCallback(SendCallback), socket);
                     this.richTextBoxResponse.AppendText(String.Format("Sending Data: {0} bytes." + "\n", arr.Length));
                 }
@@ -105,13 +138,6 @@ namespace WindowsFormsApplication1
             {
                 this.richTextBoxResponse.AppendText("Error In Send:" + ex.Message + "\n");
             }
-        }
-
-        private struct _RecvArg
-        {
-            public Socket socket;
-            public byte[] buf;
-            public int length;
         }
 
         private void SendCallback(IAsyncResult ar)
@@ -151,6 +177,26 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void buttonSelect_Click(object sender, EventArgs e)
+        {
+            sendRequest("select");
+        }
+
+        private void buttonInsert_Click(object sender, EventArgs e)
+        {
+            sendRequest("insert;" + this.textBoxID.Text + ":" + this.textBoxMessage.Text);
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            sendRequest("delete;" + this.textBoxID.Text);
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            sendRequest("update;" + this.textBoxID.Text + ":" + this.textBoxMessage.Text);
+        }
+
         private void RecvCallback(IAsyncResult ar)
         {
             try
@@ -164,10 +210,10 @@ namespace WindowsFormsApplication1
                     return;
                 }
 
-                if(s != null)
+                if (s != null)
                 {
                     int count = s.EndReceive(ar);
-                    if(count == 0)
+                    if (count == 0)
                     {
                         arg.length = 0;
                     }
@@ -175,51 +221,20 @@ namespace WindowsFormsApplication1
                     {
                         arg.length = count;
                         this.richTextBoxResponse.AppendText(string.Format("Recv {0} bytes, content: \n", count) + System.Text.Encoding.Default.GetString(arg.buf, 0, arg.length) + "\n");
-                        this.richTextBoxResponse.AppendText("Waiting receive.");
+                        this.richTextBoxResponse.AppendText("Waiting receive.\n");
                         s.BeginReceive(arg.buf, 0, BUFFER_SIZE, 0, new AsyncCallback(RecvCallback), arg);
                     }
                 }
             }
             catch (Exception ex)
             {
-                this.richTextBoxResponse.AppendText("Error In RecvCallback:" + ex.Message + "\n");
+                //this.richTextBoxResponse.AppendText("Error In RecvCallback:" + ex.Message + "\n");
             }
-        }
-
-        private void buttonDisconnect_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if(socket != null)
-                {
-                    socket.Close();
-                    this.richTextBoxResponse.AppendText("Connection Closed.\n");
-                    socket = null;
-                }
-                else
-                {
-                    this.richTextBoxResponse.AppendText("Please establish connect before other operation.\n");
-                }
-            }
-            catch (Exception ex)
-            {
-                this.richTextBoxResponse.AppendText("Error In Disconnect:" + ex.Message + "\n");
-            }
-        }
-
-        private void buttonClear1_Click(object sender, EventArgs e)
-        {
-            this.richTextBoxRequest.Clear();
         }
 
         private void buttonClear2_Click(object sender, EventArgs e)
         {
             this.richTextBoxResponse.Clear();
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            this.Opacity = (double)this.numericUpDown1.Value;
         }
     }
 }
