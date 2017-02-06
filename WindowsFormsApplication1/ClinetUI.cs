@@ -174,7 +174,7 @@ namespace WindowsFormsApplication1
                     else
                     {
                         arg.length = count;
-                        this.richTextBoxResponse.AppendText(string.Format("Recv {0} bytes, content: \n", count) + System.Text.Encoding.Default.GetString(arg.buf, 0, arg.length) + "\n");
+                        this.richTextBoxResponse.AppendText(string.Format("Recv {0} bytes, content: \n", count) + System.Text.Encoding.UTF8.GetString(arg.buf, 0, arg.length) + "\n");
                         this.richTextBoxResponse.AppendText("Waiting receive.");
                         s.BeginReceive(arg.buf, 0, BUFFER_SIZE, 0, new AsyncCallback(RecvCallback), arg);
                     }
