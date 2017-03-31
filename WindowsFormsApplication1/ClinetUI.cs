@@ -74,19 +74,19 @@ namespace WindowsFormsApplication1
                 {
                     s.EndConnect(ar);
                     this.richTextBoxResponse.AppendText("Connect Success.\n");
-                }
-                else
-                {
-                    this.richTextBoxResponse.AppendText("Please establish connect before other operation.\n");
                     if (this.checkBoxRecvData.Checked)
                     {
                         _RecvArg arg = new _RecvArg();
                         arg.socket = s;
                         arg.buf = new byte[BUFFER_SIZE];
                         arg.length = 0;
-                        this.richTextBoxResponse.AppendText("Start receive");
+                        this.richTextBoxResponse.AppendText("Start receive.\n");
                         s.BeginReceive(arg.buf, 0, BUFFER_SIZE, 0, new AsyncCallback(RecvCallback), arg);
                     }
+                }
+                else
+                {
+                    this.richTextBoxResponse.AppendText("Please establish connect before other operation.\n");                    
                 }
             }
             catch(Exception ex)
