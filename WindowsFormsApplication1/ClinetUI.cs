@@ -182,7 +182,7 @@ namespace WindowsFormsApplication1
             }
             catch (Exception ex)
             {
-                this.richTextBoxResponse.AppendText("Error In RecvCallback:" + ex.Message + "\n");
+                //this.richTextBoxResponse.AppendText("Error In RecvCallback:" + ex.Message + "\n");
             }
         }
 
