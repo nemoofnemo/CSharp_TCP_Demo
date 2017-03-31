@@ -221,5 +221,11 @@ namespace WindowsFormsApplication1
         {
             this.Opacity = (double)this.numericUpDown1.Value;
         }
+
+        private void richTextBoxResponse_TextChanged(object sender, EventArgs e)
+        {
+            this.richTextBoxResponse.SelectionStart = this.richTextBoxResponse.Text.Length;
+            this.richTextBoxResponse.ScrollToCaret();
+        }
     }
 }
