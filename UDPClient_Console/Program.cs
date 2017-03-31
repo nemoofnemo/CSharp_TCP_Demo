@@ -12,7 +12,7 @@ namespace UDPClient_Console
     {
         static void Main(string[] args)
         {
-            IPEndPoint ip = new IPEndPoint(IPAddress.Parse("127.0.0.2"), 6002);
+            IPEndPoint ip = new IPEndPoint(IPAddress.Parse("192.168.1.255"), 6002);
             Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
             string str = "hello server";

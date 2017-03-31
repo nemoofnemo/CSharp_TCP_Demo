@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientUI", "WindowsFormsApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinetUIForExampleServer", "ClinetUIForExampleServer\ClinetUIForExampleServer.csproj", "{FC29E8B5-C810-4CA5-8610-85CF6DC2EA0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDPServer", "UDPServer\UDPServer.csproj", "{F39B9032-E7AD-47E9-BD17-6E7305D1BA4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remoter", "UDPServer\Remoter.csproj", "{F39B9032-E7AD-47E9-BD17-6E7305D1BA4A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDPConsole", "UDPConsole\UDPConsole.csproj", "{B90A34B2-FBE7-422C-AC8C-8AD004B02234}"
 EndProject

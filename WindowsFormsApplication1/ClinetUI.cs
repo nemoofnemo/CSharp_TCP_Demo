@@ -78,6 +78,15 @@ namespace WindowsFormsApplication1
                 else
                 {
                     this.richTextBoxResponse.AppendText("Please establish connect before other operation.\n");
+                    if (this.checkBoxRecvData.Checked)
+                    {
+                        _RecvArg arg = new _RecvArg();
+                        arg.socket = s;
+                        arg.buf = new byte[BUFFER_SIZE];
+                        arg.length = 0;
+                        this.richTextBoxResponse.AppendText("Start receive");
+                        s.BeginReceive(arg.buf, 0, BUFFER_SIZE, 0, new AsyncCallback(RecvCallback), arg);
+                    }
                 }
             }
             catch(Exception ex)
@@ -130,15 +139,6 @@ namespace WindowsFormsApplication1
                 {
                     int count = s.EndSend(ar);
                     this.richTextBoxResponse.AppendText(String.Format("Send Success: {0} bytes.\n", count));
-                    if (this.checkBoxRecvData.Checked)
-                    {
-                        _RecvArg arg = new _RecvArg();
-                        arg.socket = s;
-                        arg.buf = new byte[BUFFER_SIZE];
-                        arg.length = 0;
-                        this.richTextBoxResponse.AppendText("Start receive");
-                        s.BeginReceive(arg.buf, 0, BUFFER_SIZE, 0, new AsyncCallback(RecvCallback), arg);
-                    }
                 }
                 else
                 {

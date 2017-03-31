@@ -35,6 +35,7 @@
             this.textBoxPort = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonClear = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // buttonStart
@@ -82,7 +83,7 @@
             this.textBoxPort.Name = "textBoxPort";
             this.textBoxPort.Size = new System.Drawing.Size(100, 21);
             this.textBoxPort.TabIndex = 4;
-            this.textBoxPort.Text = "6002";
+            this.textBoxPort.Text = "6123";
             // 
             // label2
             // 
@@ -103,11 +104,24 @@
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(409, 16);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(72, 16);
+            this.checkBox1.TabIndex = 7;
+            this.checkBox1.Text = "response";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(631, 400);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxPort);
@@ -134,6 +148,7 @@
         private System.Windows.Forms.TextBox textBoxPort;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
