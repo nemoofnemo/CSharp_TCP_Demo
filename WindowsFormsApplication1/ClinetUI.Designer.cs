@@ -234,7 +234,6 @@
             this.Controls.Add(this.textBoxIP);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
             this.Name = "ClientUI";
             this.Text = "Client";
             this.Load += new System.EventHandler(this.Form1_Load);
