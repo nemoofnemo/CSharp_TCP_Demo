@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDPConsole", "UDPConsole\UD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDPClient_Console", "UDPClient_Console\UDPClient_Console.csproj", "{AE0EACB9-086A-421C-91F8-4DF4C0CF5834}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FS", "FS\FS.csproj", "{0303CB0C-CB11-4183-B220-F6979ECF01B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -125,6 +127,18 @@ Global
 		{AE0EACB9-086A-421C-91F8-4DF4C0CF5834}.Release|x64.Build.0 = Release|Any CPU
 		{AE0EACB9-086A-421C-91F8-4DF4C0CF5834}.Release|x86.ActiveCfg = Release|Any CPU
 		{AE0EACB9-086A-421C-91F8-4DF4C0CF5834}.Release|x86.Build.0 = Release|Any CPU
+		{0303CB0C-CB11-4183-B220-F6979ECF01B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0303CB0C-CB11-4183-B220-F6979ECF01B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0303CB0C-CB11-4183-B220-F6979ECF01B5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0303CB0C-CB11-4183-B220-F6979ECF01B5}.Debug|x64.Build.0 = Debug|Any CPU
+		{0303CB0C-CB11-4183-B220-F6979ECF01B5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0303CB0C-CB11-4183-B220-F6979ECF01B5}.Debug|x86.Build.0 = Debug|Any CPU
+		{0303CB0C-CB11-4183-B220-F6979ECF01B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0303CB0C-CB11-4183-B220-F6979ECF01B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0303CB0C-CB11-4183-B220-F6979ECF01B5}.Release|x64.ActiveCfg = Release|Any CPU
+		{0303CB0C-CB11-4183-B220-F6979ECF01B5}.Release|x64.Build.0 = Release|Any CPU
+		{0303CB0C-CB11-4183-B220-F6979ECF01B5}.Release|x86.ActiveCfg = Release|Any CPU
+		{0303CB0C-CB11-4183-B220-F6979ECF01B5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
